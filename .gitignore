@@ -1,0 +1,109 @@
+# ==============================================================================
+# JEV-ALPACA-TRADER Root .gitignore
+# ==============================================================================
+
+# Byte-compiled / cache files
+__pycache__/
+**/__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Virtual Environments
+venv/
+**/venv/
+.venv/
+**/.venv/
+env/
+**/env/
+ENV/
+env.bak/
+venv.bak/
+
+# Environment files & Secrets (keep .env.example tracked)
+.env
+**/.env
+!**/.env.example
+*.local.env
+*.secret
+
+# Distribution / Packaging
+build/
+**/build/
+develop-eggs/
+dist/
+**/dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+**/*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Unit tests / Coverage / Typing
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+**/.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+**/.pytest_cache/
+.mypy_cache/
+**/.mypy_cache/
+.dmypy.json
+dmypy.json
+.pyre/
+
+# Jupyter Notebook Checkpoints
+.ipynb_checkpoints
+**/.ipynb_checkpoints
+
+# Databases & Runtime Output
+*.db
+*.sqlite
+*.sqlite3
+finrl_trading.db
+logs/
+**/logs/
+src/strategies/output/
+
+# Data Cache & Processing (allow static seed datasets)
+**/data/cache/
+**/data/processed/
+**/data/raw/
+temp/
+tmp/
+SecretDoc/
+awsConnect
+
+# IDE and OS metadata
+.vscode/
+**/.vscode/
+.idea/
+**/.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Thumbs.db
+ehthumbs.db
+desktop.ini

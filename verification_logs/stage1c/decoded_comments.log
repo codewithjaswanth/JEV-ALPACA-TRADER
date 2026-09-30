@@ -1,0 +1,11 @@
+Line 440:
+  Hex: 2020202020202020232046696c746572d3ebb9e6b7b6bbaf3a20bdf6b1a3c1f4bfc9bdbbd2d7b1eab5c4a3bbb8bac8a8d6d8cad3ceaa30a3bbb1d8d2aacab1b9e9d2bbbbafb5bd3c3d310a
+  Decoded GBK (hypothesis): # Filter与规范化: 仅保留可交易标的；负权重视为0；必要时归一化到<=1
+
+Line 460:
+  Hex: 2020202020202020202020202320c8f4c8a8d6d8bacd3e31a3acb0b4d7dcbacdbdf8d0d0cbf5b7c5b9e9d2bbbbaf0a
+  Decoded GBK (hypothesis): # 若权重和>1，按总和进行缩放归一化
+
+Line 464:
+  Hex: 2020202020202020202020202320bacd3c3d31d4f2b1a3c1f4a3acd4cad0edcaa3d3e0cfd6bdf00a
+  Decoded GBK (hypothesis): # 和<=1则保留，允许剩余现金

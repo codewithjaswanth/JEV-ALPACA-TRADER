@@ -1,0 +1,29 @@
+Starting non-interactive execution of C:\Users\Jaswanth\Downloads\Projects\JEV-Alpaca-Trader\verification_logs\FinRL_Full_selection_copy.ipynb
+Cell 0 [markdown]: COMPLETED
+Cell 1 [code]: SKIPPED (Neutralized: IPython magic (!pip / %cd))
+Cell 2 [code]: SKIPPED (Neutralized: IPython magic (!pip / %cd))
+Cell 3 [code]: Executing: # # 环境与路径设置...
+Cell 3 [code]: COMPLETED (executed without error)
+Cell 4 [code]: Executing: # 数据源初始化与成分/区间设定...
+Cell 4 [code]: FAILED (ImportError: DLL load failed while importing lib: An Application Control policy has blocked this file.)
+Traceback (most recent call last):
+  File "C:\Users\Jaswanth\Downloads\Projects\JEV-Alpaca-Trader\verification_logs\scripts\execute_tutorial_copy.py", line 80, in <module>
+    exec(code_obj, exec_globals)
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<cell_4>", line 2, in <module>
+  File "C:\Users\Jaswanth\Downloads\Projects\JEV-Alpaca-Trader\FinRL-Trading\src\data\data_fetcher.py", line 17, in <module>
+    import pandas as pd
+  File "C:\Users\Jaswanth\Downloads\Projects\JEV-Alpaca-Trader\FinRL-Trading\venv\Lib\site-packages\pandas\__init__.py", line 58, in <module>
+    from pandas.core.api import (
+    ...<61 lines>...
+    )
+  File "C:\Users\Jaswanth\Downloads\Projects\JEV-Alpaca-Trader\FinRL-Trading\venv\Lib\site-packages\pandas\core\api.py", line 9, in <module>
+    from pandas.core.dtypes.dtypes import (
+    ...<5 lines>...
+    )
+  File "C:\Users\Jaswanth\Downloads\Projects\JEV-Alpaca-Trader\FinRL-Trading\venv\Lib\site-packages\pandas\core\dtypes\dtypes.py", line 28, in <module>
+    from pandas._libs import (
+    ...<2 lines>...
+    )
+ImportError: DLL load failed while importing lib: An Application Control policy has blocked this file.
+

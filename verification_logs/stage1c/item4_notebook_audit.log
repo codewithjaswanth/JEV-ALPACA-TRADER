@@ -1,0 +1,69 @@
+﻿Total cells: 15
+
+Cell  0 [markdown]: # FinRL σà¿µ╡üτ¿ïσ╖ÑΣ╜£µ╡üτñ║Σ╛ï
+   Alpaca/Order refs: ['alpaca', 'trade_executor']
+   External contacts: ['query1.finance.yahoo.com (public market data)', 'en.wikipedia.org (public S&P500 table)', 'paper-api.alpaca.markets', 'financialmodelingprep.com']
+   Key requirements: ['APCA_API_KEY / APCA_API_SECRET (Alpaca paper account)', 'FMP_API_KEY (paid/personal API key)']
+----------------------------------------------------------------------
+Cell  1 [code    ]: !pip install -r ../requirements.txt
+----------------------------------------------------------------------
+Cell  2 [code    ]: %cd "../"
+----------------------------------------------------------------------
+Cell  3 [code    ]: # # τÄ»σóâΣ╕ÄΦ╖»σ╛äΦ«╛τ╜«
+----------------------------------------------------------------------
+Cell  4 [code    ]: # µò░µì«µ║Éσê¥σºïσîûΣ╕ÄµêÉσêå/σî║Θù┤Φ«╛σ«Ü
+   Imports: src.data.data_fetcher.get_data_manager, src.data.data_fetcher.fetch_sp500_tickers
+   External contacts: ['query1.finance.yahoo.com (public market data)', 'en.wikipedia.org (public S&P500 table)']
+----------------------------------------------------------------------
+Cell  5 [code    ]: # ΦÄ╖σÅûσƒ║µ£¼Θ¥ó∩╝êalign_quarter_dates=True∩╝ë∩╝îσ╣╢µáíΘ¬î y_return
+   Imports: pandas, src.data.data_fetcher.fetch_fundamental_data
+   External contacts: ['query1.finance.yahoo.com (public market data)', 'en.wikipedia.org (public S&P500 table)']
+----------------------------------------------------------------------
+Cell  6 [code    ]: # ΦíîΣ╕Üµ╗Üσè¿ΘÇëΦéíσ╣╢Σ┐¥σ¡ÿµ¥âΘçì CSV
+   Imports: src.strategies.base_strategy.StrategyConfig, src.strategies.ml_strategy.MLStockSelectionStrategy, src.strategies.ml_strategy.SectorNeutralMLStrategy, src.data.data_fetcher.fetch_price_data, os, pandas
+   External contacts: ['query1.finance.yahoo.com (public market data)', 'en.wikipedia.org (public S&P500 table)']
+----------------------------------------------------------------------
+Cell  7 [code    ]: # Σ╜┐τö¿ bt σ║ôσ¢₧µ╡ïµ¥âΘçì∩╝îσ╣╢Φ╛ôσç║µîçµáç
+   Imports: pandas, src.backtest.backtest_engine.BacktestConfig, src.backtest.backtest_engine.BacktestEngine, src.data.data_fetcher.fetch_price_data, pandas.DataFrame
+   External contacts: ['query1.finance.yahoo.com (public market data)', 'en.wikipedia.org (public S&P500 table)']
+----------------------------------------------------------------------
+Cell  8 [markdown]: ## Alpaca Paper Trading
+   Alpaca/Order refs: ['alpaca']
+   External contacts: ['paper-api.alpaca.markets']
+   Key requirements: ['APCA_API_KEY / APCA_API_SECRET (Alpaca paper account)']
+----------------------------------------------------------------------
+Cell  9 [code    ]: # σ▒òτñ║ Alpaca Φ┤ªµê╖τè╢µÇüπÇüτöƒµêÉ dry-run∩╝îσ╣╢σÅ»ΘÇë paper trading µëºΦíî
+   Imports: os, src.trading.trade_executor.create_trade_executor_from_env, pandas
+   Alpaca/Order refs: ['alpaca', 'order', 'trade_executor']
+   External contacts: ['paper-api.alpaca.markets']
+   Key requirements: ['APCA_API_KEY / APCA_API_SECRET (Alpaca paper account)']
+----------------------------------------------------------------------
+Cell 10 [code    ]: plan.get('orders_plan', {}).get('buy',  [])
+   Alpaca/Order refs: ['order']
+----------------------------------------------------------------------
+Cell 11 [code    ]: # µá╣µì«σ╕éσ£║τè╢µÇüΘÇëµï⌐µÿ»σÉªµÅÉΣ║ñ∩╝êpaper trading∩╝ë
+   Alpaca/Order refs: ['alpaca', 'order']
+   External contacts: ['paper-api.alpaca.markets']
+   Key requirements: ['APCA_API_KEY / APCA_API_SECRET (Alpaca paper account)']
+----------------------------------------------------------------------
+Cell 12 [code    ]: # Φ»╗σÅû Alpaca Φ┤ªµê╖σÄåσÅ▓σ╣╢σ»╣µ»öσƒ║σçå∩╝êSPY/QQQ∩╝ë
+   Imports: logging, datetime.datetime, datetime.timedelta, datetime.timezone, src.trading.performance_analyzer.create_alpaca_account_from_env, src.trading.performance_analyzer.AlpacaManager, src.trading.performance_analyzer.get_first_order_date, src.trading.performance_analyzer.get_portfolio_history, src.trading.performance_analyzer.get_benchmark_data, src.trading.performance_analyzer.display_metrics_table, src.trading.performance_analyzer.plot_performance
+   Alpaca/Order refs: ['alpaca']
+   External contacts: ['paper-api.alpaca.markets', 'financialmodelingprep.com']
+   Key requirements: ['APCA_API_KEY / APCA_API_SECRET (Alpaca paper account)', 'FMP_API_KEY (paid/personal API key)']
+----------------------------------------------------------------------
+Cell 13 [markdown]: ## σÅûµ╢êµëÇµ£ëµ£¬σ«îµêÉτÜä Alpaca Φ«óσìò∩╝êPaper Trading∩╝ë
+   Alpaca/Order refs: ['alpaca']
+   External contacts: ['paper-api.alpaca.markets']
+   Key requirements: ['APCA_API_KEY / APCA_API_SECRET (Alpaca paper account)']
+----------------------------------------------------------------------
+Cell 14 [code    ]: # µë╣ΘçÅσÅûµ╢êµëÇµ£ëµ£¬σ«îµêÉΦ«óσìò∩╝êOpen Orders∩╝ë
+   Imports: src.trading.performance_analyzer.create_alpaca_account_from_env, src.trading.performance_analyzer.AlpacaManager
+   Alpaca/Order refs: ['alpaca', 'order']
+   External contacts: ['paper-api.alpaca.markets']
+   Key requirements: ['APCA_API_KEY / APCA_API_SECRET (Alpaca paper account)']
+----------------------------------------------------------------------
+
+=== CONFIRMATION OF CELLS OUTSIDE [1, 2, 8-14] ===
+ALERT: Found 1 unneutralized cells with references:
+  Cell 0: matches ['alpaca', 'trade_executor'] - '# FinRL σà¿µ╡üτ¿ïσ╖ÑΣ╜£µ╡üτñ║Σ╛ï'

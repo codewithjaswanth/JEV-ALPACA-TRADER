@@ -1,0 +1,22 @@
+# clean_rebuild.ps1
+$ErrorActionPreference = "Continue"
+
+Write-Output "=== 1. Checking git-ignore for venv ==="
+git check-ignore -v venv/
+
+Write-Output "=== 2. Deleting contaminated venv ==="
+if (Test-Path "venv") {
+    Remove-Item -Recurse -Force "venv"
+    Write-Output "Deleted venv directory successfully."
+}
+
+Write-Output "=== 3. Creating clean venv using py -3.14 ==="
+py -3.14 -m venv venv
+$createExit = $LASTEXITCODE
+Write-Output "Venv creation exit code: $createExit"
+
+Write-Output "=== 4. Documented install: pip install -r requirements.txt ==="
+$logFile = "..\verification_logs\step1_clean_install.log"
+& .\venv\Scripts\pip.exe install -r requirements.txt 2>&1 | Out-File -FilePath $logFile -Encoding utf8
+$installExit = $LASTEXITCODE
+Write-Output "pip install exit code: $installExit"
