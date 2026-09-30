@@ -131,8 +131,6 @@ dmypy.json
 # Project specific
 /data/*
 !/data/.gitkeep
-!/data/finrl_trading.7z
-!/data/fundamental_data_full.csv
 !/data/sp500_historical_constituents.csv
 src/strategies/output/
 logs/

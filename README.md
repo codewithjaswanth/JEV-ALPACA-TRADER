@@ -94,9 +94,8 @@ JEV-ALPACA-TRADER/
 | [`FinRL-Trading/src/trading/trade_executor.py`](file:///FinRL-Trading/src/trading/trade_executor.py) | Order generation, risk guardrails validation (order caps, sector exposure), and execution pipeline. |
 | [`FinRL-Trading/src/trading/performance_analyzer.py`](file:///FinRL-Trading/src/trading/performance_analyzer.py) | Equity curve tracking, portfolio benchmark comparisons (vs. SPY/QQQ), and trade analytics. |
 | [`FinRL-Trading/src/utils/logger.py`](file:///FinRL-Trading/src/utils/logger.py) | Rotating file and console logger with configurable formatting. |
-| [`FinRL-Trading/data/finrl_trading.7z`](file:///FinRL-Trading/data/finrl_trading.7z) | Compressed baseline historical dataset archive. |
-| [`FinRL-Trading/data/fundamental_data_full.csv`](file:///FinRL-Trading/data/fundamental_data_full.csv) | Historical fundamental metrics (P/E, ROE, Debt-to-Equity, Margins) for S&P 500 constituents. |
-| [`FinRL-Trading/data/sp500_historical_constituents.csv`](file:///FinRL-Trading/data/sp500_historical_constituents.csv) | Historical point-in-time constituent list to eliminate survivorship bias during backtesting. |
+| [`FinRL-Trading/data/.gitkeep`](file:///FinRL-Trading/data/.gitkeep) | Runtime data directory anchor. |
+| [`FinRL-Trading/data/sp500_historical_constituents.csv`](file:///FinRL-Trading/data/sp500_historical_constituents.csv) | Historical point-in-time constituent list (1996-2026, 2,709 snapshots) to eliminate survivorship bias during backtesting. |
 | [`FinRL-Trading/examples/FinRL_Full_selection.ipynb`](file:///FinRL-Trading/examples/FinRL_Full_selection.ipynb) | End-to-end tutorial notebook demonstrating dataset loading, model training, backtesting, and Alpaca paper execution. |
 | [`FinRL-Trading/.env.example`](file:///FinRL-Trading/.env.example) | Complete template for all configuration parameters, API keys, risk limits, and broker settings. |
 | [`FinRL-Trading/Dockerfile`](file:///FinRL-Trading/Dockerfile) | Production Docker container specification based on Python 3.10 slim. |
@@ -157,6 +156,13 @@ As part of a professional deployment review, the following items, technical debt
 ### 5. Runtime Database & Historical Data Caching
 - **Missing Database:** The local SQLite database `finrl_trading.db` is intentionally omitted from version control. The database will automatically initialize its schema via SQLAlchemy upon first run.
 - **Dynamic Caches:** Directories `FinRL-Trading/data/cache/`, `FinRL-Trading/data/processed/`, and `FinRL-Trading/data/raw/` are excluded. Historical prices will be downloaded and cached dynamically upon strategy initialization.
+- **Omitted Large Datasets:** In compliance with repository size and bandwidth best practices, large offline dataset assets (`fundamental_data_full.csv` ~24.1 MB and `finrl_trading.7z` ~44.5 MB) are excluded from version control to prevent clone bloat and timeout issues. The codebase provides the native data pipeline to generate these assets on demand:
+  ```bash
+  # Ingest and cache fundamental metrics via FMP API into SQLite
+  python src/data/fetch_and_store_fundamentals.py
+  # Backfill historical point-in-time constituents and compute factors
+  python src/data/backfill_historical_sp500.py
+  ```
 
 ### 6. Platform Consideration: Windows Application Control / WDAC
 - During verification on Windows workstations with strict AppLocker or Windows Defender Application Control (WDAC) policies, compiled C-extensions in virtual environments (`pandas._libs`, `scipy`) may encounter:
